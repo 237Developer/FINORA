@@ -1,0 +1,77 @@
+.element {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  border: 1px solid #f0f0f0;
+}
+
+.iconeWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infos {
+  flex: 1;
+  min-width: 0;
+}
+
+.description {
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 9px;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  color: #7b879d;
+  font-size: 0.68rem;
+}
+
+.date svg {
+  flex-shrink: 0;
+}
+
+.montant {
+  color: #dc2626;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.boutonSupprimer {
+  background-color: #fee2e2;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.boutonSupprimer svg {
+  color: #dc2626;
+}
+
+@media screen and (max-width: 400px) {
+  .element {
+    font-size: 0.8rem;
+  }
+}

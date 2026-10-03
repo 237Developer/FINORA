@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    /* Version de JavaScript générée et gestion des modules */
+    "target": "ES2022",
+    "module": "CommonJS",
+    "types": ["node"],
+
+    /* Chemins d'entrée et de sortie */
+    "rootDir": "./backend",
+    "outDir": "./dist",
+
+    /* Options d'intégration et de migration */
+    "allowJs": false,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+
+    /* Sécurité */
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["backend/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

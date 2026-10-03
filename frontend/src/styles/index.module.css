@@ -1,0 +1,18 @@
+:global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:global(html),
+:global(body),
+:global(#root) {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:global(body) {
+  font-family: "Nunito", "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}

@@ -1,0 +1,239 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(14, 18, 28, 0.46);
+}
+
+.drawer {
+  width: min(100%, 980px);
+  max-height: min(80vh, 700px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 12px 20px 24px;
+}
+
+.handle {
+  width: 64px;
+  height: 6px;
+  margin: 0 auto 10px;
+  border-radius: 999px;
+  background: #d1d5db;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.headerIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.headerTitle h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #111827;
+}
+
+.closeButton {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: #f8fafc;
+}
+
+.section {
+  margin-bottom: 18px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: #111827;
+}
+
+.sectionLabel svg {
+  color: #1f2937;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chip {
+  border: 1px solid #dbe2ee;
+  background: #fff;
+  color: #475569;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: #bcd2ff;
+  background: #f8fbff;
+}
+
+.chipActive {
+  background: linear-gradient(135deg, #3178f6 0%, #2563eb 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.amountGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.amountField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #334155;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.amountInputRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 30px;
+  padding: 0 8px;
+  border-radius: 12px;
+  border: 1px solid #d7deea;
+  background: #fff;
+}
+
+.amountInputRow input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font: inherit;
+  color: #111827;
+  background: transparent;
+}
+
+.amountInputRow span {
+  flex-shrink: 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.resetButton,
+.applyButton {
+  min-height: 52px;
+  border: none;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resetButton {
+  color: #475569;
+  background: #eef2f7;
+}
+
+.applyButton {
+  color: #fff;
+  background: linear-gradient(135deg, #3178f6 0%, #2563eb 100%);
+}
+
+.resetButton svg,
+.applyButton svg {
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .drawer {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .amountGrid,
+  .actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .amountField {
+    font-size: 0.88rem;
+  }
+
+  .amountInputRow {
+    min-height: 38px;
+    padding: 0 10px;
+  }
+
+  .resetButton,
+  .applyButton {
+    min-height: 48px;
+    font-size: 0.9rem;
+    padding-inline: 10px;
+  }
+
+  .resetButton span,
+  .applyButton span {
+    white-space: nowrap;
+  }
+}
