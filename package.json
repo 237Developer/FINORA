@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc && cp -R backend/src/views dist/src/views && cp -R backend/src/public dist/src/public",
-    "start": "npm run build && node dist/src/app.js",
+    "build": "vite build ",
+    "start": "tsc && cp -R backend/src/views dist/src/views && cp -R backend/src/public dist/src/public && node dist/src/app.js",
     "dev:server": "vite tsx watch backend/src/app.ts",
     "lint": "eslint .",
     "preview": "vite preview"
