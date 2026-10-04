@@ -35,4 +35,5 @@ export const users = pgTable("users", {
   id: varchar({ length: 255 }).primaryKey(),
   emailAdress: varchar("email_adress", { length: 255 }),
   password: varchar({ length: 255 }),
+  googleId: varchar("google_id", { length: 255 }),
 });

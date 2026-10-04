@@ -17,35 +17,7 @@
     <main class="connexion_page">
       <section class="connexion_card" aria-labelledby="auth-title">
         <header class="connexion_header">
-          <div class="connexion_logoMark" aria-hidden="true">
-            <svg
-              viewBox="0 0 64 64"
-              class="connexion_logoIcon"
-              role="img"
-              aria-label="Logo portefeuille"
-            >
-              <path
-                d="M12 20a8 8 0 0 1 8-8h24a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H20a8 8 0 0 1-8-8V20Z"
-                fill="currentColor"
-              />
-              <path
-                d="M26 22h20l-6-7h-13a3 3 0 0 0-3 3v4Z"
-                fill="#7eb3ff"
-                opacity="0.95"
-              />
-              <rect
-                x="33"
-                y="30"
-                width="22"
-                height="12"
-                rx="6"
-                fill="#ffffff"
-                opacity="0.96"
-              />
-              <circle cx="43" cy="36" r="3" fill="#2a67f6" />
-            </svg>
-          </div>
-          <h1 id="auth-title">Gestionnaire de Dépenses</h1>
+          <h1 id="auth-title" class="logoText">FINORA</h1>
           <p>Connectez-vous à votre compte pour accéder à votre espace.</p>
         </header>
 
@@ -131,7 +103,7 @@
 
           <div class="connexion_divider"><span>Ou</span></div>
 
-          <button class="connexion_googleButton" type="button">
+          <button class="connexion_googleButton" type="button" onclick="window.location.href='/auth/google'">
             <svg
               viewBox="0 0 48 48"
               class="connexion_googleIcon"

@@ -10,6 +10,10 @@
   --connexion-primary-deep: #0f53d6;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .connexion_page {
   min-height: 100vh;
   display: grid;
@@ -40,14 +44,14 @@
   backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 22px;
-  padding: 28px 28px 24px;
+  padding: 30px 24px 20px;
   position: relative;
   z-index: 1;
 }
 
 .connexion_header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .connexion_logoMark {
@@ -83,6 +87,7 @@
 .connexion_form {
   display: grid;
   gap: 16px;
+  padding-top: 20px;
 }
 
 .connexion_fieldGroup {
@@ -280,11 +285,12 @@
 
 @media (max-width: 720px) {
   .connexion_page {
-    padding: 20px 14px;
+    padding: 10px 10px;
+    align-items: flex-start;
   }
 
   .connexion_card {
-    padding: 24px 18px 20px;
+    padding: 35px 16px 16px;
     border-radius: 18px;
   }
 
@@ -297,4 +303,24 @@
 .connexion_errorMessage {
   color: red;
   text-align: center;
+}
+
+.logoText {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin: 15px 0 8px 0;
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-transform: uppercase;
+  white-space: nowrap;
 }

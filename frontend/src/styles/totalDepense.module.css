@@ -32,3 +32,82 @@
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 50%;
 }
+
+.filterContainer {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.filterTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.filterTrigger:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.chevron {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 8px;
+  min-width: 180px;
+  display: none;
+  z-index: 20;
+  padding: 6px;
+}
+
+.dropdownOpen {
+  display: block;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.dropdownItem:hover {
+  background: #f1f5f9;
+}
+
+.selectedItem {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.checkIcon {
+  font-size: 1.1rem;
+  color: #16a34a;
+}

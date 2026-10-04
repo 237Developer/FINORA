@@ -6,6 +6,12 @@
   border-radius: 12px;
   font-size: 1rem;
   border: 1px solid #f0f0f0;
+  transition: opacity 0.2s ease;
+}
+
+.deleting {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .iconeWrapper {

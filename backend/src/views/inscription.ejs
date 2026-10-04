@@ -17,44 +17,19 @@
     <main class="inscription_page">
       <section class="inscription_card" aria-labelledby="signup-title">
         <header class="inscription_header">
-          <div class="inscription_logoMark" aria-hidden="true">
-            <svg
-              viewBox="0 0 64 64"
-              class="inscription_logoIcon"
-              role="img"
-              aria-label="Logo portefeuille"
-            >
-              <path
-                d="M12 20a8 8 0 0 1 8-8h24a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H20a8 8 0 0 1-8-8V20Z"
-                fill="currentColor"
-              />
-              <path
-                d="M26 22h20l-6-7h-13a3 3 0 0 0-3 3v4Z"
-                fill="#7eb3ff"
-                opacity="0.95"
-              />
-              <rect
-                x="33"
-                y="30"
-                width="22"
-                height="12"
-                rx="6"
-                fill="#ffffff"
-                opacity="0.96"
-              />
-              <circle cx="43" cy="36" r="3" fill="#2a67f6" />
-            </svg>
-          </div>
-          <h1 id="signup-title">Créer un compte</h1>
+          <h1 id="signup-title" class="logoText">FINORA</h1>
           <p>Inscrivez-vous pour commencer à gérer vos dépenses.</p>
         </header>
 
-        <form class="inscription_form" action="/auth/sign-up" method="post" novalidate>
-    <% if (typeof error !== 'undefined' && error) { %>
-    <div class="inscription_errorMessage" role="alert">
-      <%= error %>
-    </div>
-  <% } %>
+        <form
+          class="inscription_form"
+          action="/auth/sign-up"
+          method="post"
+          novalidate
+        >
+          <% if (typeof error !== 'undefined' && error) { %>
+          <div class="inscription_errorMessage" role="alert"><%= error %></div>
+          <% } %>
           <div class="inscription_fieldGroup">
             <label for="email">Adresse e-mail</label>
             <div class="inscription_inputShell">
@@ -74,7 +49,16 @@
                 autocomplete="email"
               />
             </div>
-            <p id="email-error" class="error-text" style="color: red; font-size: 0.8rem; margin-top: 4px; display: none;"></p>
+            <p
+              id="email-error"
+              class="error-text"
+              style="
+                color: red;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                display: none;
+              "
+            ></p>
           </div>
 
           <div class="inscription_fieldGroup">
@@ -108,7 +92,16 @@
                 </svg>
               </button>
             </div>
-            <p id="password-error" class="error-text" style="color: red; font-size: 0.8rem; margin-top: 4px; display: none;"></p>
+            <p
+              id="password-error"
+              class="error-text"
+              style="
+                color: red;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                display: none;
+              "
+            ></p>
           </div>
 
           <div class="inscription_fieldGroup">
@@ -142,7 +135,16 @@
                 </svg>
               </button>
             </div>
-            <p id="confirmPassword-error" class="error-text" style="color: red; font-size: 0.8rem; margin-top: 4px; display: none;"></p>
+            <p
+              id="confirmPassword-error"
+              class="error-text"
+              style="
+                color: red;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                display: none;
+              "
+            ></p>
           </div>
 
           <label class="inscription_terms">
@@ -152,7 +154,16 @@
               <a href="#">politique de confidentialité</a>.</span
             >
           </label>
-          <p id="terms-error" class="error-text" style="color: red; font-size: 0.8rem; margin-top: 4px; display: none;"></p>
+          <p
+            id="terms-error"
+            class="error-text"
+            style="
+              color: red;
+              font-size: 0.8rem;
+              margin-top: 4px;
+              display: none;
+            "
+          ></p>
 
           <button class="inscription_primaryButton" type="submit">
             <span>Créer mon compte</span>
@@ -170,7 +181,11 @@
 
           <div class="inscription_divider"><span>Ou</span></div>
 
-          <button class="inscription_googleButton" type="button">
+          <button
+            class="inscription_googleButton"
+            type="button"
+            onclick="window.location.href = '/auth/google'"
+          >
             <svg
               viewBox="0 0 48 48"
               class="inscription_googleIcon"

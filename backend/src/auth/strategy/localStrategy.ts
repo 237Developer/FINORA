@@ -11,7 +11,7 @@ export default () => {
         if (!user) {
           return done(null, false);
         }
-        if (!await bcrypt.compare(password, user.password)) {
+        if (!await bcrypt.compare(password, user.password as string)) {
           return done(null, false);
         }
 

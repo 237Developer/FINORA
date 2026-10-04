@@ -22,6 +22,9 @@
   border-radius: 0;
   padding: 18px 18px 24px;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .sidebarOpen {
@@ -79,6 +82,11 @@
   gap: 10px;
 }
 
+.navGroup {
+  display: flex;
+  flex-direction: column;
+}
+
 .navItem {
   width: 100%;
   border: none;
@@ -123,4 +131,102 @@
   margin-left: auto;
   color: #94a3b8;
   font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.rotateChevron {
+  transform: rotate(180deg);
+}
+
+.subDropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 0 0 12px;
+}
+
+.subDropdownOpen {
+  max-height: 300px;
+  padding: 6px 0 10px 12px;
+}
+
+.subItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: transparent;
+  cursor: default;
+}
+
+.subItem:hover {
+  background: #f8fafc;
+}
+
+.subItemIconWrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+.subItemIcon {
+  font-size: 1rem;
+}
+
+.subItemLabel {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 20px 0 16px 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 16px;
+  color: #0f172a;
+}
+
+.userIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+.userIcon {
+  font-size: 1.4rem;
+}
+
+.userEmail {
+  font-size: 0.88rem;
+  font-weight: 600;
+  word-break: break-all;
+  color: #334155;
 }

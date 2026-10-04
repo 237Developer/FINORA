@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 import styles from "../styles/elementListe.module.css";
 import { formatExpenseDate } from "../utils/formatExpenseDate";
 
@@ -31,12 +32,37 @@ const CATEGORIES = {
   },
 };
 
-function ElementListe({ description, categorie, montant, date }) {
+function ElementListe({
+  id,
+  description,
+  categorie,
+  montant,
+  date,
+  filter,
+  setDepenses,
+}) {
   // Si la catégorie n'existe pas dans la config, on prend "Autre" par défaut
   const config = CATEGORIES[categorie] || CATEGORIES.autre;
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    setIsDeleting(true);
+    try {
+      const response = await fetch(`/data/${id}?frequency=${filter}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      if (data.depenses && setDepenses) {
+        setDepenses(data.depenses);
+      }
+    } catch (err) {
+      console.error(err);
+      setIsDeleting(false);
+    }
+  };
 
   return (
-    <div className={styles.element}>
+    <div className={`${styles.element} ${isDeleting ? styles.deleting : ""}`}>
       <div
         className={styles.iconeWrapper}
         style={{ backgroundColor: config.couleurFond }}
@@ -68,7 +94,11 @@ function ElementListe({ description, categorie, montant, date }) {
 
       <p className={styles.montant}>- {montant} F</p>
 
-      <button className={styles.boutonSupprimer}>
+      <button
+        className={styles.boutonSupprimer}
+        onClick={handleDelete}
+        disabled={isDeleting}
+      >
         <Icon icon="mdi:trash-can-outline" width="20" height="20" />
       </button>
     </div>

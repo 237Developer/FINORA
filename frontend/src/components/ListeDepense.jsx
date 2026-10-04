@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useState, useRef, useEffect } from "react";
 import ElementListe from "./ElementListe";
+import Loader from "./Loader";
 import styles from "../styles/listeDepense.module.css";
 
 const filterOptions = [
@@ -11,9 +12,8 @@ const filterOptions = [
   { id: "personnalise", label: "Personnalisé" },
 ];
 
-function ListeDepense({ depenses, onSupprimer }) {
+function ListeDepense({ depenses, setDepenses, filter, setFilter, isLoading }) {
   const depensesInverses = [...depenses].reverse();
-  const [filter, setFilter] = useState("cettesemaine");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -27,7 +27,8 @@ function ListeDepense({ depenses, onSupprimer }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const selectedOption = filterOptions.find((o) => o.id === filter) || filterOptions[1];
+  const selectedOption =
+    filterOptions.find((o) => o.id === filter) || filterOptions[1];
 
   return (
     <div className={styles.conteneur}>
@@ -41,10 +42,15 @@ function ListeDepense({ depenses, onSupprimer }) {
           >
             <Icon icon="mdi:calendar-outline" className={styles.calendarIcon} />
             <span className={styles.filterText}>{selectedOption.label}</span>
-            <Icon icon="mdi:chevron-down" className={`${styles.chevron} ${isDropdownOpen ? styles.rotate : ""}`} />
+            <Icon
+              icon="mdi:chevron-down"
+              className={`${styles.chevron} ${isDropdownOpen ? styles.rotate : ""}`}
+            />
           </div>
 
-          <div className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.dropdownOpen : ""}`}>
+          <div
+            className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.dropdownOpen : ""}`}
+          >
             {filterOptions.map((opt) => (
               <div
                 key={opt.id}
@@ -58,7 +64,9 @@ function ListeDepense({ depenses, onSupprimer }) {
                 }}
               >
                 <span>{opt.label}</span>
-                {filter === opt.id && <Icon icon="mdi:check" className={styles.checkIcon} />}
+                {filter === opt.id && (
+                  <Icon icon="mdi:check" className={styles.checkIcon} />
+                )}
               </div>
             ))}
           </div>
@@ -66,19 +74,34 @@ function ListeDepense({ depenses, onSupprimer }) {
       </div>
 
       <div className={styles.liste}>
-        {depensesInverses.length ? (
-          depensesInverses.map((depense, index) => (
+        {isLoading ? (
+          <Loader />
+        ) : depensesInverses.length ? (
+          depensesInverses.map((depense) => (
             <ElementListe
               key={depense.id}
+              id={depense.id}
               description={depense.description}
               categorie={depense.category}
               montant={depense.montant}
               date={depense.date}
-              onSupprimer={() => onSupprimer(depense.id)}
+              filter={filter}
+              setDepenses={setDepenses}
             />
           ))
         ) : (
-          <p className={styles.aucuneDepense}>Aucune depense à afficher</p>
+          <div className={styles.aucuneDepense}>
+            <div className={styles.aucuneIconWrapper}>
+              <Icon
+                icon="mdi:receipt-text-outline"
+                className={styles.aucuneIcon}
+              />
+            </div>
+            <p className={styles.aucuneTitre}>Aucune dépense à afficher</p>
+            <p className={styles.aucuneSousTitre}>
+              Ajoutez votre première dépense pour commencer le suivi.
+            </p>
+          </div>
         )}
       </div>
     </div>

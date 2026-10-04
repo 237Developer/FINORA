@@ -13,14 +13,29 @@ const categories = [
   { value: "autre", label: "Autre", icon: "mdi:shape-outline" },
 ];
 
-export default function Form({ setDepense }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Form({ setDepense, isOpen: propIsOpen, setIsOpen: propSetIsOpen, filter }) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isOpen = propIsOpen !== undefined ? propIsOpen : internalIsOpen;
+  
+  const setIsOpen = (val) => {
+    if (val) {
+      setUserEditedDate(false);
+      setDateValue(getDefaultDateTime());
+    }
+    if (propSetIsOpen) {
+      propSetIsOpen(val);
+    } else {
+      setInternalIsOpen(val);
+    }
+  };
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   
   const [category, setCategory] = useState("");
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [dateValue, setDateValue] = useState(getDefaultDateTime());
+  const [userEditedDate, setUserEditedDate] = useState(false);
 
   const dropdownRef = useRef(null);
   const formRef = useRef(null);
@@ -35,9 +50,19 @@ export default function Form({ setDepense }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen || userEditedDate) return;
+
+    const interval = setInterval(() => {
+      setDateValue(getDefaultDateTime());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isOpen, userEditedDate]);
+
   const handleClose = () => {
     setIsOpen(false);
     setCategory("");
+    setUserEditedDate(false);
     setDateValue(getDefaultDateTime());
     setErrorMessage("");
     if (formRef.current) {
@@ -47,6 +72,7 @@ export default function Form({ setDepense }) {
 
   const onSubmit = (e) => handleFormSubmit({
     e,
+    filter,
     setIsSubmitting,
     setErrorMessage,
     setDepense,
@@ -157,17 +183,18 @@ export default function Form({ setDepense }) {
             type="datetime-local" 
             name="date" 
             value={dateValue}
-            onChange={(e) => setDateValue(e.target.value)}
+            onChange={(e) => {
+              setDateValue(e.target.value);
+              setUserEditedDate(true);
+            }}
           />
         </div>
       </div>
 
-      {errorMessage && (
-        <div className={styles.error}>
-          <Icon icon="mdi:alert-circle-outline" />
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      <div className={styles.error} style={{ display: errorMessage ? 'flex' : 'none' }}>
+        <Icon icon="mdi:alert-circle-outline" />
+        <span>{errorMessage}</span>
+      </div>
 
       <div className={styles.formActions}>
         <Button 

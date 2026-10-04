@@ -1,5 +1,6 @@
 export async function handleFormSubmit({
   e,
+  filter,
   setIsSubmitting,
   setErrorMessage,
   setDepense,
@@ -19,7 +20,7 @@ export async function handleFormSubmit({
   setErrorMessage("");
 
   try {
-    const reponse = await fetch("/data", {
+    const reponse = await fetch(`/data?frequency=${filter || "cettesemaine"}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -36,7 +37,7 @@ export async function handleFormSubmit({
     }
 
     const data = await reponse.json();
-    setDepense(data);
+    setDepense(data.depenses || data);
     handleClose();
   } catch (err) {
     setErrorMessage(err.message);

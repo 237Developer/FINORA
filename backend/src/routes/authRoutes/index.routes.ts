@@ -4,6 +4,7 @@ import { signUpController } from "../../controllers/auth.controller";
 import passport from "../../auth/passport";
 import logoutController from "../../controllers/logoutController";
 import inscriptionValidator from "../../middleware/inscriptionValidator";
+import googleAuthRouter from "../../auth/google";
 
 const router = Router();
 
@@ -47,5 +48,7 @@ router.get("/sign-up", (req: Request, res: Response) => {
 router.post("/sign-up", inscriptionValidator, signUpController);
 
 router.get("/log-out", logoutController);
+
+router.use("/google", googleAuthRouter);
 
 export default router;
